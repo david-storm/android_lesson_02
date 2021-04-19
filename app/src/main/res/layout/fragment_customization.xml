@@ -4,10 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="customizationViewModel"
+            type="com.example.cardapp.CustomizationViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_rose">
+        android:onClick="@{() -> customizationViewModel.changeBackground()}">
 
         <TextView
             android:id="@+id/field_name_text"
@@ -29,6 +36,7 @@
             android:layout_marginEnd="@dimen/medium_margin"
             android:autofillHints="username"
             android:ems="10"
+            android:text="@{customizationViewModel.name}"
             android:hint="@string/field_name_edit"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
@@ -47,7 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/field_name_edit" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/field_title_edit"
             style="@style/edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -70,10 +78,10 @@
             android:layout_marginTop="@dimen/small_margin"
             android:text="@string/field_text_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toBottomOf="@+id/field_title_edit" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/field_text_edit"
             style="@style/edit_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -93,7 +101,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/extra_big_margin"
             android:contentDescription="@string/avatar"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName3"
+            app:layout_constraintBottom_toBottomOf="@+id/field_text_edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/field_name_edit"
             app:srcCompat="@drawable/apple" />
@@ -108,7 +116,7 @@
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+            app:layout_constraintTop_toBottomOf="@+id/field_text_edit" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_launch"
@@ -129,8 +137,7 @@
             android:contentDescription="@string/image_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_launch"
-            app:srcCompat="@drawable/fjb1" />
+            app:layout_constraintTop_toBottomOf="@+id/button_launch" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/item_arrow_left"
@@ -138,6 +145,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:src="@drawable/arrow_left"
+            android:onClick="@{() -> customizationViewModel.prevItem()}"
             app:layout_constraintBottom_toBottomOf="@+id/item_image"
             app:layout_constraintEnd_toStartOf="@+id/item_image"
             app:layout_constraintStart_toStartOf="parent"
@@ -148,6 +156,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
+            android:onClick="@{() -> customizationViewModel.nextItem()}"
             android:src="@drawable/arrow_right"
             app:layout_constraintBottom_toBottomOf="@+id/item_image"
             app:layout_constraintEnd_toEndOf="parent"
