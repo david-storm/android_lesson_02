@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CardApp</string>
+    <string name="field_name_text">Name:</string>
+    <string name="field_name_edit">enter name here</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="field_title_text">Title:</string>
+    <string name="field_title_edit">enter title here</string>
+    <string name="field_text_text">Text:</string>
+    <string name="field_text_edit">enter text here</string>
+    <string name="avatar">avatar</string>
+    <string name="test_button">Test</string>
+    <string name="launch_button">Launch</string>
+    <string name="image_item">smile</string>
 </resources>

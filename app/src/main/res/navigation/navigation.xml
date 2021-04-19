@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/customizationFragment">
+
+    <fragment
+        android:id="@+id/customizationFragment"
+        android:name="com.example.cardapp.CustomizationFragment"
+        android:label="CustomizationFragment"
+        tools:layout="@layout/fragment_customization"
+        >
+        <action
+            android:id="@+id/action_customizationFragment_to_animationFragment"
+            app:destination="@id/animationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animationFragment"
+        android:name="com.example.cardapp.AnimationFragment"
+        android:label="fragment_animation"
+        tools:layout="@layout/fragment_animation" />
+</navigation>
