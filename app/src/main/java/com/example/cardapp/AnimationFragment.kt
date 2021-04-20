@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import androidx.databinding.DataBindingUtil
@@ -45,7 +46,6 @@ class AnimationFragment : Fragment() {
         fadeBackground()
         rotateItem()
         translateAvatar()
-        translateText()
     }
 
     private fun fadeBackground() {
@@ -55,6 +55,7 @@ class AnimationFragment : Fragment() {
         animator.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
                 fadeTitle()
+                translateText()
             }
         })
         animator.start()
@@ -84,11 +85,9 @@ class AnimationFragment : Fragment() {
     }
 
     private fun translateText() {
-        val length =  binding.text.getWidth()
-        val width = binding.background.getWidth()
-        Log.i("translate", (width + length).toFloat().toString())
-        Log.i("translate", (-length).toFloat().toString())
-        val animator = ObjectAnimator.ofFloat(binding.text, View.TRANSLATION_X, width + length.toFloat(), -length.toFloat())
+        binding.text.visibility = VISIBLE
+        val width = binding.background.width
+        val animator = ObjectAnimator.ofFloat(binding.text, View.TRANSLATION_X, (width).toFloat(), (-binding.text.width - width).toFloat())
         animator.duration = 5000
         animator.start()
     }
