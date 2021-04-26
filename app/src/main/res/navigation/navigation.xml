@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/customizationFragment"
-        android:name="com.example.cardapp.CustomizationFragment"
+        android:name="com.example.cardapp.customization.CustomizationFragment"
         android:label="CustomizationFragment"
         tools:layout="@layout/fragment_customization"
         >
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/animationFragment"
-        android:name="com.example.cardapp.AnimationFragment"
+        android:name="com.example.cardapp.animation.AnimationFragment"
         android:label="fragment_animation"
         tools:layout="@layout/fragment_animation" />
 </navigation>

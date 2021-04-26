@@ -5,16 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-            name="customizationViewModel"
-            type="com.example.cardapp.CustomizationViewModel" />
+            name="viewModel"
+            type="com.example.cardapp.customization.CustomizationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onClick="@{() -> customizationViewModel.changeBackground()}">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/settingBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:onClick="@{() -> viewModel.changeBackground()}"
+            android:scaleType="centerCrop"
+            app:backgroundPath="@{viewModel.model.backgroundName}"
+            app:source="@{viewModel.backgroundSource}" />
 
         <TextView
             android:id="@+id/field_name_text"
@@ -27,21 +37,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/field_name_edit"
-            style="@style/edit_text"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/wrapper_name_edit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_margin"
-            android:layout_marginEnd="@dimen/medium_margin"
-            android:autofillHints="username"
-            android:ems="10"
-            android:text="@{customizationViewModel.name}"
-            android:hint="@string/field_name_edit"
-            android:inputType="textPersonName"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/field_name_text" />
+            app:layout_constraintTop_toBottomOf="@id/field_name_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/field_name_edit"
+                style="@style/edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:autofillHints="username"
+                android:ems="10"
+                android:hint="@string/field_name_edit"
+                android:inputType="textPersonName"
+                android:text="@{viewModel.model.name}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:id="@+id/textView2"
@@ -52,22 +71,31 @@
             android:layout_marginTop="@dimen/small_margin"
             android:text="@string/field_title_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/field_name_edit" />
+            app:layout_constraintTop_toBottomOf="@+id/wrapper_name_edit" />
 
-        <EditText
-            android:id="@+id/field_title_edit"
-            style="@style/edit_text"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/wrapper_title_edit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
             android:layout_marginEnd="@dimen/medium_margin"
-            android:autofillHints="no"
-            android:ems="10"
-            android:hint="@string/field_title_edit"
-            android:inputType="textPersonName"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/field_title_edit"
+                style="@style/edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="no"
+                android:ems="10"
+                android:hint="@string/field_title_edit"
+                android:inputType="textPersonName"
+                android:text="@{viewModel.model.name}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textView3"
@@ -78,22 +106,32 @@
             android:layout_marginTop="@dimen/small_margin"
             android:text="@string/field_text_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/field_title_edit" />
+            app:layout_constraintTop_toBottomOf="@+id/wrapper_title_edit" />
 
-        <EditText
-            android:id="@+id/field_text_edit"
-            style="@style/edit_text"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/wrapper_text_edit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/medium_margin"
             android:layout_marginEnd="@dimen/medium_margin"
-            android:autofillHints="no"
-            android:ems="10"
-            android:hint="@string/field_text_edit"
-            android:inputType="textPersonName"
             app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/field_text_edit"
+                style="@style/edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="no"
+                android:ems="10"
+                android:hint="@string/field_text_edit"
+                android:inputType="textPersonName"
+                android:text="@{viewModel.model.name}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <ImageView
             android:id="@+id/imageView"
@@ -101,9 +139,9 @@
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/extra_big_margin"
             android:contentDescription="@string/avatar"
-            app:layout_constraintBottom_toBottomOf="@+id/field_text_edit"
+            app:layout_constraintBottom_toBottomOf="@+id/wrapper_text_edit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/field_name_edit"
+            app:layout_constraintTop_toTopOf="@+id/wrapper_name_edit"
             app:srcCompat="@drawable/apple" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -116,7 +154,7 @@
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/field_text_edit" />
+            app:layout_constraintTop_toBottomOf="@+id/wrapper_text_edit" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_launch"
@@ -131,21 +169,24 @@
 
         <ImageView
             android:id="@+id/item_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/large_size"
+            android:layout_height="@dimen/large_size"
             android:layout_marginTop="32dp"
             android:contentDescription="@string/image_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_launch" />
+            app:layout_constraintTop_toBottomOf="@+id/button_launch"
+            app:imagePath="@{viewModel.model.itemName}"
+            app:source="@{viewModel.itemSource}"
+            tools:src="@drawable/apple" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/item_arrow_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
+            android:onClick="@{() -> viewModel.prevItem()}"
             android:src="@drawable/arrow_left"
-            android:onClick="@{() -> customizationViewModel.prevItem()}"
             app:layout_constraintBottom_toBottomOf="@+id/item_image"
             app:layout_constraintEnd_toStartOf="@+id/item_image"
             app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +197,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:onClick="@{() -> customizationViewModel.nextItem()}"
+            android:onClick="@{() -> viewModel.nextItem()}"
             android:src="@drawable/arrow_right"
             app:layout_constraintBottom_toBottomOf="@+id/item_image"
             app:layout_constraintEnd_toEndOf="parent"
@@ -203,8 +244,7 @@
                 android:layout_width="270dp"
                 android:layout_height="130dp"
                 android:contentDescription="@string/image_item"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/background_fire" />
+                android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/pattern_title"

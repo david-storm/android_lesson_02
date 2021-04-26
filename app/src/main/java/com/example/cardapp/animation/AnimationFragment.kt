@@ -1,24 +1,21 @@
-package com.example.cardapp
+package com.example.cardapp.animation
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator.INFINITE
-import android.opengl.Visibility
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
+import com.example.cardapp.R
+import com.example.cardapp.customization.CustomizationViewModel
 import com.example.cardapp.databinding.FragmentAnimationBinding
-import com.example.cardapp.databinding.FragmentCustomizationBinding
 
 class AnimationFragment : Fragment() {
 
@@ -36,7 +33,7 @@ class AnimationFragment : Fragment() {
 
         binding.customizationViewModel = viewModel
 
-        binding.item.setImageResource(viewModel.item.value!!)
+//        binding.item.setImageResource(viewModel.item.value!!)
 
         animation()
         return binding.root
@@ -49,16 +46,16 @@ class AnimationFragment : Fragment() {
     }
 
     private fun fadeBackground() {
-        binding.background.setBackgroundResource(viewModel.background.value!!)
-        val animator = ObjectAnimator.ofFloat(binding.background, View.ALPHA, 0f, 1f)
-        animator.duration = 2000
-        animator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
-                fadeTitle()
-                translateText()
-            }
-        })
-        animator.start()
+//        binding.background.setBackgroundResource(viewModel.background.value!!)
+//        val animator = ObjectAnimator.ofFloat(binding.background, View.ALPHA, 0f, 1f)
+//        animator.duration = 2000
+//        animator.addListener(object : AnimatorListenerAdapter() {
+//            override fun onAnimationEnd(animation: Animator?) {
+//                fadeTitle()
+//                translateText()
+//            }
+//        })
+//        animator.start()
     }
 
     private fun rotateItem(){
